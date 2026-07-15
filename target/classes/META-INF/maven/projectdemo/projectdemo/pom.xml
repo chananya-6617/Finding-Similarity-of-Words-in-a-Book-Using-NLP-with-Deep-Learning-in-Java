@@ -1,0 +1,79 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <!-- Your project's coordinates -->
+    <groupId>projectdemo</groupId>
+    <artifactId>projectdemo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    
+    <!-- 
+    The 'properties' section sets up versions for your project 
+    and dependencies.
+    -->
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <dl4j.version>1.0.0-beta7</dl4j.version>
+    </properties>
+
+    <!-- 
+    The 'dependencies' section lists all the external libraries 
+    (JAR files) your project needs.
+    -->
+    <dependencies>
+        <!-- Deeplearning4j Core -->
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-core</artifactId>
+            <version>${dl4j.version}</version>
+        </dependency>
+
+        <!-- Deeplearning4j NLP (Natural Language Processing) -->
+        <dependency>
+            <groupId>org.deeplearning4j</groupId>
+            <artifactId>deeplearning4j-nlp</artifactId>
+            <version>${dl4j.version}</version>
+        </dependency>
+
+        <!-- 
+        ND4J Backend - This is the library that had the typo.
+        It handles the heavy math (Native = CPU).
+        This is the CORRECTED line.
+        -->
+        <dependency>
+            <groupId>org.nd4j</groupId>
+            <artifactId>nd4j-native-platform</artifactId>
+            <version>${dl4j.version}</version>
+        </dependency>
+        
+        <!-- Logging - To see the training progress and avoid warnings -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+    </dependencies>
+    
+    <!-- 
+    This section configures the build process. It tells Maven to 
+    use Java 8 (1.8) for compilation, which matches our 'properties'.
+    -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>
+
